@@ -16,8 +16,8 @@ NULL
 #' @importFrom dplyr slice slice_head slice_max slice_min slice_sample slice_tail
 #' @importFrom dplyr summarise summarize tally ungroup
 #' @importFrom dplyr case_when n n_distinct
-#' @importFrom dplyr left_join join_by group_by
-#' @importFrom dplyr add_count pick if_any add_tally tally if_all across
+#' @importFrom dplyr left_join join_by group_by row_number any_of
+#' @importFrom dplyr add_count pick if_any add_tally tally if_all across if_else
 #'
 #' @importFrom cli cli_abort cli_warn cli_alert cli_fmt cli_text cli_alert_info
 #' @importFrom cli cli_h1
@@ -30,11 +30,11 @@ NULL
 #'
 #' @importFrom pillar tbl_sum tbl_format_footer
 #'
-#' @importFrom tidyr pivot_longer pivot_wider
+#' @importFrom tidyr pivot_longer pivot_wider build_wider_spec pivot_wider_spec
 #'
 #' @importFrom haven labelled
 #'
-#' @importFrom tidyselect starts_with everything where
+#' @importFrom tidyselect starts_with everything where all_of
 NULL
 
 

@@ -48,8 +48,9 @@ overflow: visible;
 }
 </style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -60,7 +61,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -350,8 +351,8 @@ multiple-response questions and block questions.</p>
 <code>Excel</code>, building on the excellent work of the [openxlsx]
 package. It is designed with ease of use in mind, at the expense of some
 functionality of <code>openxlsx</code>.</p>
-<p>This package relies extensively on the <a href="https://www.tidyverse.org/">tidyverse</a> and so we use many of
-the same terms and concepts here.</p>
+<p>This package relies extensively on the <a href="https://tidyverse.org/">tidyverse</a> and so we use many of the
+same terms and concepts here.</p>
 <p>There are three aspects to this package:</p>
 <ol style="list-style-type: decimal">
 <li><p>Functions to help with the analysis of survey complex survey
@@ -527,7 +528,7 @@ weights to the <code>wt</code> argument:</p>
 <span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co">#&gt; ── Gender by age make up of clothing opinion data (weighted) ───────────────────</span></span>
 <span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co">#&gt; # A xlr_table: 12 x 4</span></span>
 <span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co">#&gt;   age_group gender2            N Percent</span></span>
-<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co">#&gt;   &lt;x_vctr&gt;  &lt;x_vctr&gt;     &lt;x_dbl&gt; &lt;x_pct&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co">#&gt;   &lt;x_vctr&gt;  &lt;x_vctr&gt;     &lt;x_num&gt; &lt;x_pct&gt;</span></span>
 <span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co">#&gt; 1 18-30     male       122,277.0     47%</span></span>
 <span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co">#&gt; 2 18-30     female     118,532.0     46%</span></span>
 <span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co">#&gt; 3 18-30     non-binary  19,378.0      7%</span></span>
@@ -698,10 +699,10 @@ the select statement above.</p>
 <span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co">#&gt; # A xlr_table: 20 x 4</span></span>
 <span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co">#&gt;   `Question Block`       value                   N Percent</span></span>
 <span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co">#&gt;   &lt;x_vctr&gt;               &lt;x_vctr&gt;          &lt;x_int&gt; &lt;x_pct&gt;</span></span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co">#&gt; 1 Pants are good to wear Strongly Disagree     180     18%</span></span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="co">#&gt; 2 Pants are good to wear Disagree              194     20%</span></span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co">#&gt; 3 Pants are good to wear Neutral               204     21%</span></span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co">#&gt; 4 Pants are good to wear Agree                 205     21%</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co">#&gt; 1 Pants are good to wear Strongly Disagree     187     19%</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="co">#&gt; 2 Pants are good to wear Disagree              200     20%</span></span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co">#&gt; 3 Pants are good to wear Neutral               210     21%</span></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co">#&gt; 4 Pants are good to wear Agree                 208     21%</span></span>
 <span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="co">#&gt; # ℹ 16 more rows</span></span>
 <span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a></span>
 <span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="co"># You can also select the columns directly</span></span>
@@ -710,10 +711,10 @@ the select statement above.</p>
 <span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="co">#&gt; # A xlr_table: 20 x 4</span></span>
 <span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a><span class="co">#&gt;   `Question Block`       value                   N Percent</span></span>
 <span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="co">#&gt;   &lt;x_vctr&gt;               &lt;x_vctr&gt;          &lt;x_int&gt; &lt;x_pct&gt;</span></span>
-<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="co">#&gt; 1 Pants are good to wear Strongly Disagree     180     18%</span></span>
-<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a><span class="co">#&gt; 2 Pants are good to wear Disagree              194     20%</span></span>
-<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a><span class="co">#&gt; 3 Pants are good to wear Neutral               204     21%</span></span>
-<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a><span class="co">#&gt; 4 Pants are good to wear Agree                 205     21%</span></span>
+<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="co">#&gt; 1 Pants are good to wear Strongly Disagree     187     19%</span></span>
+<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a><span class="co">#&gt; 2 Pants are good to wear Disagree              200     20%</span></span>
+<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a><span class="co">#&gt; 3 Pants are good to wear Neutral               210     21%</span></span>
+<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a><span class="co">#&gt; 4 Pants are good to wear Agree                 208     21%</span></span>
 <span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a><span class="co">#&gt; # ℹ 16 more rows</span></span></code></pre></div>
 <p>You can cut all the columns in the question block by another
 column(s) by specifying the <code>cols</code> argument. As with
@@ -725,10 +726,10 @@ select the columns.</p>
 <span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="co">#&gt; # A xlr_table: 60 x 5</span></span>
 <span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="co">#&gt;   gender2  `Question Block`       value                   N Percent</span></span>
 <span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="co">#&gt;   &lt;x_vctr&gt; &lt;x_vctr&gt;               &lt;x_vctr&gt;          &lt;x_int&gt; &lt;x_pct&gt;</span></span>
-<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="co">#&gt; 1 male     Pants are good to wear Strongly Disagree      75     17%</span></span>
-<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a><span class="co">#&gt; 2 male     Pants are good to wear Disagree               96     21%</span></span>
-<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="co">#&gt; 3 male     Pants are good to wear Neutral                97     21%</span></span>
-<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a><span class="co">#&gt; 4 male     Pants are good to wear Agree                  89     20%</span></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="co">#&gt; 1 male     Pants are good to wear Strongly Disagree      79     17%</span></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a><span class="co">#&gt; 2 male     Pants are good to wear Disagree               99     21%</span></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="co">#&gt; 3 male     Pants are good to wear Neutral                99     21%</span></span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a><span class="co">#&gt; 4 male     Pants are good to wear Agree                  89     19%</span></span>
 <span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="co">#&gt; # ℹ 56 more rows</span></span></code></pre></div>
 </div>
 </div>
@@ -748,15 +749,15 @@ options.</p>
 <span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a><span class="co">#&gt; ── This is a title ─────────────────────────────────────────────────────────────</span></span>
 <span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a><span class="co">#&gt; # A xlr_table: 1000 x 20</span></span>
 <span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a><span class="co">#&gt;    weight group    gender   gender2     age age_group    Q1_1   Q1_2  Q1_3  Q1_4</span></span>
-<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a><span class="co">#&gt;   &lt;x_int&gt; &lt;x_vctr&gt; &lt;x_vctr&gt; &lt;x_dbl&gt; &lt;x_int&gt; &lt;x_vctr&gt;  &lt;x_int&gt; &lt;x_in&gt; &lt;x_i&gt; &lt;x_i&gt;</span></span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a><span class="co">#&gt;   &lt;x_int&gt; &lt;x_vctr&gt; &lt;x_vctr&gt; &lt;x_num&gt; &lt;x_int&gt; &lt;x_vctr&gt;  &lt;x_int&gt; &lt;x_in&gt; &lt;x_i&gt; &lt;x_i&gt;</span></span>
 <span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a><span class="co">#&gt; 1   1,072 a        female      2.00      25 18-30           1      5     5     2</span></span>
 <span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a><span class="co">#&gt; 2     219 a        female      2.00      64 51-65           3      1     2     2</span></span>
 <span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a><span class="co">#&gt; 3   1,187 a        male        1.00      35 31-40           4      3     5     1</span></span>
 <span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a><span class="co">#&gt; 4   1,860 a        male        1.00      55 51-65           4      1     2     2</span></span>
 <span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a><span class="co">#&gt; # ℹ 996 more rows</span></span>
 <span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 10 more variables: Q2_1 &lt;x_vctr&gt;, Q2_2 &lt;x_vctr&gt;, Q2_3 &lt;x_vctr&gt;,</span></span>
-<span id="cb17-15"><a href="#cb17-15" tabindex="-1"></a><span class="co">#&gt; #   Q2_4 &lt;x_vctr&gt;, Q2_5 &lt;x_vctr&gt;, Q2_6 &lt;x_vctr&gt;, Q3_1 &lt;x_dbl&gt;, Q3_2 &lt;x_dbl&gt;,</span></span>
-<span id="cb17-16"><a href="#cb17-16" tabindex="-1"></a><span class="co">#&gt; #   Q3_3 &lt;x_dbl&gt;, Q3_other &lt;x_vctr&gt;</span></span>
+<span id="cb17-15"><a href="#cb17-15" tabindex="-1"></a><span class="co">#&gt; #   Q2_4 &lt;x_vctr&gt;, Q2_5 &lt;x_vctr&gt;, Q2_6 &lt;x_vctr&gt;, Q3_1 &lt;x_num&gt;, Q3_2 &lt;x_num&gt;,</span></span>
+<span id="cb17-16"><a href="#cb17-16" tabindex="-1"></a><span class="co">#&gt; #   Q3_3 &lt;x_num&gt;, Q3_other &lt;x_vctr&gt;</span></span>
 <span id="cb17-17"><a href="#cb17-17" tabindex="-1"></a><span class="co">#&gt; this is a footnote with extra information</span></span></code></pre></div>
 <p>When you call <code>xlr_table()</code> it converts the elements of
 your table to different <code>xlr</code> types.</p>

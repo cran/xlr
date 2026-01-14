@@ -93,6 +93,14 @@ test_that("casting works as expected",{
   expect_type(vec_cast(xlr_integer(1),1L),
               type = "integer")
 
+  # expect that it all works correctly for casting to and
+  # from doubles
+  expect_type(vec_cast(xlr_integer(1),double()),
+              type = "double")
+  expect_s3_class(vec_cast(as.double(1),xlr_integer(1)),
+                  class = "xlr_integer",
+                  exact = FALSE)
+
 })
 
 test_that("Casting within a function works as expected, when casting from a
@@ -106,7 +114,7 @@ test_that("Casting within a function works as expected, when casting from a
 })
 
 # Arithmetic-----------------------------------
-test_that("xlr_integers should not calculate division",{
+test_that("xlr_integers work with different operations n",{
   # test every operation works
   expect_equal(xlr_integer(1)+xlr_integer(1),xlr_integer(2))
   expect_equal(xlr_integer(1)-xlr_integer(0),xlr_integer(1))
@@ -114,7 +122,14 @@ test_that("xlr_integers should not calculate division",{
   expect_equal(xlr_integer(1)^xlr_integer(2),xlr_integer(1))
   expect_equal(xlr_integer(3)%%xlr_integer(2),xlr_integer(1))
 
-  expect_error(xlr_integer(1)/xlr_integer(1))
+})
+
+test_that("when an operation involves a coersion into a numeric, it
+          gives back an xlr_numeric",{
+
+  expect_silent(xlr_integer(1)/xlr_integer(2))
+  expect_s3_class(xlr_integer(1)/xlr_integer(2),"xlr_numeric")
+  expect_equal(xlr_integer(1)/xlr_integer(2),xlr_numeric(0.5))
 })
 
 test_that("xlr_integers should work with all numerics and
@@ -122,19 +137,53 @@ test_that("xlr_integers should work with all numerics and
 
   expect_equal(1+xlr_integer(1),2)
   expect_equal(xlr_integer(1)+1,2)
-#
-#   expect_equal(1-xlr_integer(.5),xlr_integer(.5))
-#   expect_equal(xlr_integer(.5)-1,xlr_integer(-.5))
-#
-#   expect_equal(1*xlr_integer(1),xlr_integer(1))
-#   expect_equal(xlr_integer(1)*1,xlr_integer(1))
-#
-#   expect_equal(1/xlr_integer(1),xlr_integer(1))
-#   expect_equal(xlr_integer(1)/1,xlr_integer(1))
-#
-#   expect_equal(1^xlr_integer(2),xlr_integer(1))
-#   expect_equal(xlr_integer(2)^1,xlr_integer(2))
-#
-#   expect_equal(3%%xlr_integer(2),xlr_integer(1))
-#   expect_equal(xlr_integer(3)%%2,xlr_integer(1))
+})
+
+test_that("vec_arith.xlr_integer.xlr_integer raises warning when things don't match",{
+  # first check it raises a warning
+  expect_snapshot(xlr_integer(1)+xlr_integer(1,style = xlr_format()))
+})
+
+
+test_that("vec_arith.xlr_integer.xlr_integer raises an error when things don't match",{
+  # first check it raises a warning
+  expect_error(xlr_integer(1)+TRUE,class = "vctrs_error_incompatible")
+})
+
+test_that("we can create a ggplot silently",{
+  df <- mtcars
+  df$test <- xlr_integer(df$cyl)
+  expect_silent(ggplot2::ggplot(df,ggplot2::aes(x = test,y=test)))
+})
+
+test_that("xlr_integer works with vec_math, median and quantile",{
+
+  expect_equal(sum(xlr_integer(c(1,1))),2)
+  expect_equal(median(xlr_integer(c(1,1))),1)
+
+  quant_out <- 1
+  names(quant_out) <- "50%"
+  expect_equal(quantile(xlr_integer(c(1,1)),0.5),quant_out)
+})
+
+
+test_that("xlr_integer casting can work between xlr types",{
+  expect_s3_class(vec_cast(xlr_percent(dp=4),xlr_integer(1)),
+                  class = "xlr_integer",
+                  exact = FALSE)
+  expect_s3_class(c(xlr_integer(1), xlr_percent(dp=4)),
+                  class = "xlr_integer",
+                  exact = FALSE)
+
+  expect_s3_class(vec_cast(xlr_numeric(1),xlr_integer(1)),
+                  class = "xlr_integer",
+                  exact = FALSE)
+  expect_s3_class(c(xlr_integer(1), xlr_numeric(1)),
+                  class = "xlr_integer",
+                  exact = FALSE)
+})
+
+test_that("xlr_integer casting throughs an error when you lose precision",{
+  expect_snapshot(vec_cast(c(1.2,4.2,4.5),xlr_integer()),
+                  error = TRUE)
 })

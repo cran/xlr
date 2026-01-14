@@ -31,3 +31,23 @@
       10       9
       # i 90 more rows
 
+# vec_arith.xlr_integer.xlr_integer raises warning when things don't match
+
+    Code
+      xlr_integer(1) + xlr_integer(1, style = xlr_format())
+    Condition
+      Warning:
+      Attributes ("style) do not match, taking the attributes from the left-hand side.
+    Output
+      <xlr_integer[1]>
+      [1] 2
+
+# xlr_integer casting throughs an error when you lose precision
+
+    Code
+      vec_cast(c(1.2, 4.2, 4.5), xlr_integer())
+    Condition
+      Error in `xlr_integer()`:
+      ! Can't convert from `x` <double> to <integer> due to loss of precision.
+      * Locations: 1, 2, 3
+
