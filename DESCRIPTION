@@ -1,6 +1,6 @@
 Package: xlr
 Title: Create Table Summaries and Export Neat Tables to 'Excel'
-Version: 1.1.0
+Version: 1.1.1
 Authors@R: 
     person(given = "Nicholas",
            family = "Hilderson",
@@ -21,7 +21,7 @@ Collate: as_base_r.R xlr_table.R xlr_to_workbook.R
         xlr_n_percent.R xlr_format.R openxlsx_utils.R xlr_doc.R
         error_utils.R create_table_of_contents.R
         build_question_block_table.R table_utils.R data.R is_xlr_type.R
-        make_wider.R
+        make_wider.R remove_NA.R
 Suggests: knitr, rmarkdown, testthat (>= 3.0.0), data.table, lubridate,
         ggplot2
 Config/testthat/edition: 3
@@ -33,8 +33,8 @@ VignetteBuilder: knitr
 URL: https://nhilder.github.io/xlr/, https://github.com/NHilder/xlr
 BugReports: https://github.com/NHilder/xlr/issues
 NeedsCompilation: no
-Packaged: 2026-01-14 04:59:51 UTC; nicholashilderson
+Packaged: 2026-01-16 23:40:27 UTC; nicholashilderson
 Author: Nicholas Hilderson [aut, cre, cph]
 Maintainer: Nicholas Hilderson <nhilderson.code@gmail.com>
 Repository: CRAN
-Date/Publication: 2026-01-14 05:10:03 UTC
+Date/Publication: 2026-01-17 09:10:02 UTC
