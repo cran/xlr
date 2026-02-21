@@ -1,3 +1,6 @@
+# xlr 1.1.2
+* Updated code to fix a bug caused by `dplyr` dependency.
+
 # xlr 1.1.1
 ## Bugs
 * Refactored some internal code for NA handling to handle changes in `dplyr`
